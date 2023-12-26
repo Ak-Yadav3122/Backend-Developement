@@ -9,6 +9,17 @@ import connectDB from "./db/index.js";
 
 
 connectDB()
+.then(()=>{
+    app.on("error",(error)=>{
+        console.log("ERROR",error);
+    })
+    app.listen(process.env.PORT || 8000, ()=>{
+        console.log(`server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("MONGODB Connection Faild !!!",err);
+})
 
 
 
@@ -48,3 +59,4 @@ connectDB()
 
 // when we connect database always use try catch method 
 // use of efi method= (function {})() one() is for functinon and other() is for emediately envoke kar do
+// we are alwayse use the .use method when we are using middlewares.
