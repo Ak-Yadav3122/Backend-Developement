@@ -1,13 +1,25 @@
 // By using promise 
+// In high order function it accept the function as a method and also return the function.
 
-const asyncHandler = (requstHandler)=>{
-    (req,res,next)=>{
+const asyncHandler = (requstHandler)=>{ 
+     return (req,res,next)=>{
         Promise.resolve(requstHandler(req,res,next))
         .reject((err) =>next(err))
     }
 }
 
 export {asyncHandler}
+
+
+
+
+
+
+
+
+
+
+
 
 //By using async await method
 
